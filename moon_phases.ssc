@@ -1,0 +1,36 @@
+//
+// Name: Moon Phases
+// License: Public Domain
+// Author: Iheanyi Ekechukwu
+// Description: Show the different phases of the Moon over a year from current Observer location.
+// Future Plans: Display each moon phase's name as they change
+// Author Website: Iheanyi Ekechukwu
+core.setMinFps(500);
+
+
+//end_time = core.getJDay();
+
+core.wait(1);
+core.clear("natural");
+LandscapeMgr.setFlagLandscape(false);
+LandscapeMgr.setFlagAtmosphere(false);
+LandscapeMgr.setFlagFog(false);
+core.wait(1);
+GridLinesMgr.setFlagEquatorGrid(false);
+//core.setGuiVisible(false);
+id = LabelMgr.labelScreen("Simulation of 2012 Moon Phases from January to December", 100,100, false, 20);
+LabelMgr.setLabelShow(id, true);
+core.setTimeRate(0);
+core.setDate("2012:01:01T08:00:00");
+core.selectObjectByName("Moon", false);
+StelMovementMgr.setFlagTracking(true);
+core.wait(2);
+StelMovementMgr.autoZoomIn(2);
+core.wait(2);
+LabelMgr.setLabelShow(id, false);
+LabelMgr.deleteLabel(id);
+core.wait(2);
+for(i = 0; i < 365; ++i) {
+	core.setDate("+1 days");
+	core.wait(.1);
+}
